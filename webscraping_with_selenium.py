@@ -1,4 +1,4 @@
-import re, json, time, argparse, sys
+import re, json, time, argparse, sys, random
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -146,7 +146,8 @@ def scrape_emails_multiple_names(entity_names: list):
                 time.sleep(2)
             except:
                 pass
-    with open("results.json", "w") as outfile:
+    file_name = f"results_{random.randint(10000, 19999)}.json"
+    with open(file_name, "w") as outfile:
         json.dump(result_dic, outfile)
     return None
 
